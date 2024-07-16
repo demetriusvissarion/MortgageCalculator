@@ -33,11 +33,11 @@ public class Main {
         System.out.println("Mortgage: $" + formattedResult);
 
         // ------------Loan Eligibility Section------------
+        System.out.print("What is your income? ");
+        int incomeInput = scanner.nextInt();
+        boolean hasHighIncome = incomeInput > 100_000;
+
         scanner.nextLine();
-        System.out.print("Do you have an income above 50k? [y/n]: ");
-        String hasHighIncomeInput = scanner.nextLine().trim().toLowerCase();
-        boolean hasHighIncome = hasHighIncomeInput.equals("y");   
-        
         System.out.print("Do you have a good credit score? [y/n]: ");
         String hasGoodCreditInput = scanner.nextLine().trim().toLowerCase();
         boolean hasGoodCredit = hasGoodCreditInput.equals("y");
@@ -49,7 +49,8 @@ public class Main {
         boolean isEligible = (hasHighIncome || hasGoodCredit) && !hasCriminalRecord;
         if (isEligible) {
             System.out.println("You are eligible for a loan");
-        } else {
+        }
+        else {
             System.out.println("You are NOT eligible for a loan");
         }
 
