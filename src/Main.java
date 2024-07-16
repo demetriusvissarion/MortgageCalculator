@@ -31,6 +31,29 @@ public class Main {
 
         // output result (Mortgage)
         System.out.println("Mortgage: $" + formattedResult);
+
+        // ------------Loan Eligibility Section------------
+        scanner.nextLine();
+        System.out.print("Do you have an income above 50k? [y/n]: ");
+        String hasHighIncomeInput = scanner.nextLine().trim().toLowerCase();
+        boolean hasHighIncome = hasHighIncomeInput.equals("y");   
+        
+        System.out.print("Do you have a good credit score? [y/n]: ");
+        String hasGoodCreditInput = scanner.nextLine().trim().toLowerCase();
+        boolean hasGoodCredit = hasGoodCreditInput.equals("y");
+
+        System.out.print("Do you have a criminal record? [y/n]: ");
+        String hasCriminalRecordInput = scanner.nextLine().trim().toLowerCase();
+        boolean hasCriminalRecord = hasCriminalRecordInput.equals("y");
+
+        boolean isEligible = (hasHighIncome || hasGoodCredit) && !hasCriminalRecord;
+        if (isEligible) {
+            System.out.println("You are eligible for a loan");
+        } else {
+            System.out.println("You are NOT eligible for a loan");
+        }
+
+        scanner.close();
     }
 }
 
