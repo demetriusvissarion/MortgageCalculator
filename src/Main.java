@@ -1,29 +1,33 @@
 import java.util.Scanner;
 import java.lang.Math;
+import java.text.NumberFormat;
 
 public class Main {
     public static void main(String[] args) {
+        final byte MONTHS_IN_YEAR = 12;
+        final byte PERCENT = 100;
         Scanner scanner = new Scanner(System.in);
 
         // Principal
         System.out.print("Principal: ");
-        double principal = scanner.nextDouble();
+        int principal = scanner.nextInt();
 
         // Annual Interest Rate
         System.out.print("Annual Interest Rate: ");
-        double annual_interest_rate = scanner.nextDouble();
+        float annualInterestRate = scanner.nextFloat();
 
         // Period
         System.out.print("Period (Years): ");
         double period = scanner.nextDouble();
 
         // calculate result
-        double r = annual_interest_rate/100/12;
-        double n = period * 12;
+        double r = annualInterestRate/PERCENT/MONTHS_IN_YEAR;
+        double n = period * MONTHS_IN_YEAR;
         double result = principal * (r * Math.pow(( 1 + r ), n) / (Math.pow(( 1 + r ), n) - 1));
 
-        // format result to 2 decimal places
-        String formattedResult = String.format("%.2f", result);
+        // format result to currency
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+        String formattedResult = currencyFormat.format(result);
 
         // output result (Mortgage)
         System.out.println("Mortgage: $" + formattedResult);
