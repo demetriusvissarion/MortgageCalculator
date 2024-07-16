@@ -35,7 +35,8 @@ public class Main {
         // ------------Loan Eligibility Section------------
         System.out.print("What is your income? ");
         int incomeInput = scanner.nextInt();
-        boolean hasHighIncome = incomeInput > 100_000;
+        boolean hasHighIncome = (incomeInput > 100_000);
+        String classname = hasHighIncome ? "First" : "Economy";
 
         scanner.nextLine();
         System.out.print("Do you have a good credit score? [y/n]: ");
@@ -49,6 +50,7 @@ public class Main {
         boolean isEligible = (hasHighIncome || hasGoodCredit) && !hasCriminalRecord;
         if (isEligible) {
             System.out.println("You are eligible for a loan");
+            System.out.println("Loan class: " + classname);
         }
         else {
             System.out.println("You are NOT eligible for a loan");
