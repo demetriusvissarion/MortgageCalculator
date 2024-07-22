@@ -9,16 +9,35 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         // Principal
-        System.out.print("Principal: ");
-        int principal = scanner.nextInt();
+        int principal = 0;
+        while (principal < 1000 || principal > 1000000) {
+            System.out.print("Principal (£1K - £1M): ");
+            principal = scanner.nextInt();
+            if (principal < 1000 || principal > 1000000) {
+                System.out.println("Enter a number between 1,000 and 1,000,000.");
+            }
+        }
 
         // Annual Interest Rate
-        System.out.print("Annual Interest Rate: ");
-        float annualInterestRate = scanner.nextFloat();
+        float annualInterestRate = -0.1f;
+        while (annualInterestRate < 0 || annualInterestRate > 30) {
+            System.out.print("Annual Interest Rate: ");
+            annualInterestRate = scanner.nextFloat();
+            if (annualInterestRate < 0 || annualInterestRate > 30) {
+                System.out.println("Enter a value greater than 0 and less than or equal to 30.");
+            }
+        }
 
         // Period
-        System.out.print("Period (Years): ");
-        double period = scanner.nextDouble();
+        double period = 0;
+
+        while (period < 1 || period > 30) {
+            System.out.print("Period (Years): ");
+            period = scanner.nextDouble();
+            if (period < 1 || period > 30) {
+                System.out.println("Enter a value between 1 and 30.");
+            }
+        }
 
         // calculate result
         double r = annualInterestRate/PERCENT/MONTHS_IN_YEAR;
