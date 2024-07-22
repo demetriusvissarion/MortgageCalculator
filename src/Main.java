@@ -7,9 +7,11 @@ public class Main {
         final byte MONTHS_IN_YEAR = 12;
         final byte PERCENT = 100;
         Scanner scanner = new Scanner(System.in);
+        int principal = 0;
+        float annualInterestRate = -0.1f;
+        double period = 0;
 
         // Principal
-        int principal = 0;
         while (principal < 1000 || principal > 1000000) {
             System.out.print("Principal (£1K - £1M): ");
             principal = scanner.nextInt();
@@ -19,18 +21,15 @@ public class Main {
         }
 
         // Annual Interest Rate
-        float annualInterestRate = -0.1f;
-        while (annualInterestRate < 0 || annualInterestRate > 30) {
+        while (annualInterestRate < 1 || annualInterestRate > 30) {
             System.out.print("Annual Interest Rate: ");
             annualInterestRate = scanner.nextFloat();
-            if (annualInterestRate < 0 || annualInterestRate > 30) {
+            if (annualInterestRate < 1 || annualInterestRate > 30) {
                 System.out.println("Enter a value greater than 0 and less than or equal to 30.");
             }
         }
 
         // Period
-        double period = 0;
-
         while (period < 1 || period > 30) {
             System.out.print("Period (Years): ");
             period = scanner.nextDouble();
@@ -55,21 +54,20 @@ public class Main {
         System.out.print("What is your income? ");
         int incomeInput = scanner.nextInt();
         boolean hasHighIncome = (incomeInput > 100_000);
-        String classname = hasHighIncome ? "First" : "Economy";
+        String className = hasHighIncome ? "First" : "Economy";
 
         scanner.nextLine();
+
         System.out.print("Do you have a good credit score? [y/n]: ");
-        String hasGoodCreditInput = scanner.nextLine().trim().toLowerCase();
-        boolean hasGoodCredit = hasGoodCreditInput.equals("y");
+        boolean hasGoodCredit = scanner.nextLine().trim().equalsIgnoreCase("y");
 
         System.out.print("Do you have a criminal record? [y/n]: ");
-        String hasCriminalRecordInput = scanner.nextLine().trim().toLowerCase();
-        boolean hasCriminalRecord = hasCriminalRecordInput.equals("y");
+        boolean hasCriminalRecord = scanner.nextLine().trim().equalsIgnoreCase("y");
 
         boolean isEligible = (hasHighIncome || hasGoodCredit) && !hasCriminalRecord;
         if (isEligible) {
             System.out.println("You are eligible for a loan");
-            System.out.println("Loan class: " + classname);
+            System.out.println("Loan class: " + className);
         }
         else {
             System.out.println("You are NOT eligible for a loan");
